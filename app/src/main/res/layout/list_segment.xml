@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/segment_title"
+            tools:text="Article Title preview example after ListView loading and inflation"/>
+
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorSectionName"
+        android:textSize="18sp"
+        android:id="@+id/author"
+        tools:text="Author of News Article"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/textColorSectionName"
+            android:textSize="18sp"
+            android:id="@+id/date"
+            tools:text="Published Date"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/textColorSectionName"
+            android:textSize="18sp"
+            android:id="@+id/section_name"
+            tools:text="Section Name"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
