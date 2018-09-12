@@ -18,6 +18,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class with helper methods to help make HTTP request and parse the JSON response
+ */
 public final class QueryUtils {
 
         /** Tag for log messages*/
@@ -30,32 +33,41 @@ public final class QueryUtils {
         private QueryUtils(){
         }
 
-        /** Query Guardian dataset and return list of JSON objects */
-        public static List<NewsEvent> fetchNewsEventData(String requestUrl){
+        /** Query Guardian dataset and return list of {@link NewsEvent} Objects*/
+        public static List<NewsEvent> fetchNewsEventData(String requestUrl) {
+
+            //Sleep thread for 3/4's of a second to show progress indicator
+            try{
+                Thread.sleep(750);
+            }catch(InterruptedException e) {
+                e.printStackTrace();
+            }
 
             //Create URL object
-            URL url=createUrl(requestUrl);
+            URL url = createUrl(requestUrl);
 
             //Perform HTTP request to the URL and receive JSON response back
             String jsonResponse=null;
             try{
-                jsonResponse=makeHttpRequest(url);
-            }catch (IOException e) {
-                Log.e(LOG_TAG, "fetchNewsEventData: Problem making http request",e);
+                jsonResponse = makeHttpRequest(url);
+                Log.i(LOG_TAG,"QueryUtils fetchNewsData CALLED");
+            }catch(IOException e) {
+                Log.e(LOG_TAG,"QueryUtils fetchNewsEventData: Problem making http request", e);
             }
-        //Extract relevant fields from JSON response and create list of {@link NewsEvent}s
-            List<NewsEvent>events=extractFeatureFromJson(jsonResponse);
 
+            //Extract relevant fields from JSON response and create list of {@link NewsEvent}s
+            List<NewsEvent> events = extractFeatureFromJson(jsonResponse);
             //Return list of NewsEvents
             return events;
+        }
 
             /** Returns new URL object from given String URL */
-            private static URL createUrl(String requestUrl){
+            private static URL createUrl(String stringUrl){
             URL url=null;
             try{
                 url=new URL(stringUrl);
             }catch (MalformedURLException e){
-            Log.e(LOG_TAG,"fetchNewsEventData: Problem building URL",e);
+            Log.e(LOG_TAG,"QueryUtils fetchNewsEventData: Problem building URL",e);
             }
             return url;
         }
@@ -82,11 +94,16 @@ public final class QueryUtils {
                 if (urlConnection.getResponseCode()==HttpURLConnection.HTTP_OK){
                     inputStream=urlConnection.getInputStream();
                     jsonResponse=readFromStream(inputStream);
+                    Log.i(LOG_TAG,
+                            "QueryUtils makeHttpRequest:" +
+                                    " SUCCESSFULLY CONNECTED JSON RESPONSE RETRIEVED");
                 }else{
-                    Log.e(LOG_TAG,"Error response code:", + urlConnection.getResponseCode());
+                    Log.e(LOG_TAG,"QueryUtils makeHttpRequest:" +
+                            " ERROR!!! RESPONSE CODE:" + urlConnection.getResponseCode());
                 }
             }catch(IOException e){
-                    Log.e(LOG_TAG,"Problem retrieving JSON results.",e);
+                    Log.e(LOG_TAG,"QueryUtils makeHttpRequest:" +
+                            " PROBLEM RETRIEVING JSON RESULTS.",e);
                 }finally{
                     if (urlConnection!=null){
                         urlConnection.disconnect();
