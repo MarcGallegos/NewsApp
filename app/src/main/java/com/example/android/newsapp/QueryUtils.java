@@ -39,8 +39,9 @@ public final class QueryUtils {
             //Sleep thread for 3/4's of a second to show progress indicator
             try{
                 Thread.sleep(750);
-            }catch(InterruptedException e) {
-                e.printStackTrace();
+            }catch(InterruptedException ie) {
+                Log.e(LOG_TAG,"QueryUtils fetchNewsData: INTERRUPTED...",ie);
+                ie.printStackTrace();
             }
 
             //Create URL object
@@ -50,9 +51,9 @@ public final class QueryUtils {
             String jsonResponse=null;
             try{
                 jsonResponse = makeHttpRequest(url);
-                Log.i(LOG_TAG,"QueryUtils fetchNewsData CALLED");
-            }catch(IOException e) {
-                Log.e(LOG_TAG,"QueryUtils fetchNewsEventData: Problem making http request", e);
+                Log.i(LOG_TAG,"QueryUtils fetchNewsData makeHttpRequest CALLED");
+            }catch(IOException ioe) {
+                Log.e(LOG_TAG,"QueryUtils fetchNewsEventData: Problem making http request", ioe);
             }
 
             //Extract relevant fields from JSON response and create list of {@link NewsEvent}s
@@ -66,8 +67,8 @@ public final class QueryUtils {
             URL url=null;
             try{
                 url=new URL(stringUrl);
-            }catch (MalformedURLException e){
-            Log.e(LOG_TAG,"QueryUtils fetchNewsEventData: Problem building URL",e);
+            }catch (MalformedURLException mue){
+            Log.e(LOG_TAG,"QueryUtils createUrl: Problem building URL",mue);
             }
             return url;
         }
@@ -139,6 +140,7 @@ public final class QueryUtils {
              * features from JSON response
              */
             private static List<NewsEvent> extractFeatureFromJson(String newsEventJSON){
+                String authArray;
                 //If JSON string is empty or null, return early
                 if (TextUtils.isEmpty(newsEventJSON)){
                     return null;
@@ -153,30 +155,40 @@ public final class QueryUtils {
                 try {
                     //build a JSON object of NewsEvent features with the corresponding data
                     JSONObject baseJsonResponse = new JSONObject(newsEventJSON);
-                    //extract JSONArray with key named "results" (a news event list of results)
-                    JSONArray newsEventArray = baseJsonResponse.getJSONArray("results");
+                    //extract JSONObject with key named "response" (a news event list of results)
+                    JSONObject newsEventArticles = baseJsonResponse.getJSONObject("response");
+
+                    //For a given event, extract JSONObject with key named "results"
+                    //which represents a list of article data
+                    JSONArray article = newsEventArticles.getJSONArray("results");
 
                     //For each NewsEvent in newsEventArray, create an {@link NewsEvent} object.
                     //while index i is less than array length, increment i..
-                    for (int i = 0; i < newsEventArray.length(); i++) {
+                    for (int i = 0; i < newsEventArticles.length(); i++) {
                         //extract single newsEvent @ index position (i) from events list
-                        JSONObject currentNewsEvent = newsEventArray.getJSONObject(i);
-                        //For a given event, extract JSONObject with key named "article"
-                        //which represents a list of article data
-                        JSONObject article = currentNewsEvent.getJSONObject("article");
+                        JSONObject currentNewsEvent = newsEventArticles.getJSONObject(i);
+
                         //extract string for key named "sectionName"
-                        String sectionName = article.getString("sectionName");
+                        String sectionName = newsEventArticles.getString("sectionName");
                         //extract string for key named "webTitle"
-                        String webTitle = article.getString("webTitle");
+                        String webTitle = newsEventArticles.getString("webTitle");
                         //extract string for key named "webUrl"
-                        String webUrl = article.getString("webUrl");
+                        String webUrl = newsEventArticles.getString("webUrl");
                         //extract string for key named "webPublicationDate"
-                        String webPublicationDate = article.getString("webPublicationDate");
+                        String webPublicationDate = newsEventArticles.getString("webPublicationDate");
                         //extract string for key named "contributor"
                         //Get JSON object with key named "tags"
                         JSONObject tags = currentNewsEvent.getJSONObject("tags");
-                        //extract (contributor) string for key named "webTitle"
-                        String webTitleC = tags.getString("webTitle");
+
+                        for(int a=0;a<tags.length();a++){
+                            JSONObject authArray=currentNewsEvent.getJSONObject(a);
+
+                            //extract (contributor) string for key named "webTitle"
+                            JSONObject webTitleC = authArray.getJSONObject("byline");
+
+
+
+
 
                         //Create new {@link NewsEvent} object with sectionName, webTitle,
                         //webUrl, webPublicationDate, and webTitleC (contributor title) from
@@ -185,7 +197,7 @@ public final class QueryUtils {
                                 sectionName, webTitle, webUrl, webPublicationDate, webTitleC);
                         //Add newly created {@link newsEvent} to list of events
                         events.add(newsEvent);
-                    }
+                    }}
 
                     //If an error is thrown when executing any of the above statements in the "try"
                     // block catch exception here, so the app doesn't crash. Print a log message
