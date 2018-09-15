@@ -19,7 +19,7 @@ public class EventLoader extends AsyncTaskLoader<List<NewsEvent>> {
      *
      * @param url to load data from
      */
-    public EventLoader(Context context,String Url){
+    public EventLoader(Context context,String url){
         super(context);
         mUrl=url;
     }
