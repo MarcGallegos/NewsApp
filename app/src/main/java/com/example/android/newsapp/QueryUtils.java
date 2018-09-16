@@ -135,78 +135,75 @@ public final class QueryUtils {
             return output.toString();
         }
 
-            /**
-             * Return a list of {@link NewsEvent) objects that has been built up from parsing
-             * features from JSON response
-             */
-            private static List<NewsEvent> extractFeatureFromJson(String newsEventJSON) {
+        /**
+         * Return a list of {@link NewsEvent) objects that has been built up from parsing
+         * features from JSON response
+         */
+        private static List<NewsEvent> extractFeatureFromJson(String newsEventJSON) {
 
-                String jsonObjectFields;
+            //If JSON string is empty or null, return early
+            if (TextUtils.isEmpty(newsEventJSON)) {
+                return null;
+            }
 
-                //If JSON string is empty or null, return early
-                if (TextUtils.isEmpty(newsEventJSON)) {
-                    return null;
-                }
+            //Create an empty ArrayList that event parsed list segments can be added to
+            List<NewsEvent> events = new ArrayList<>();
 
-                //Create an empty ArrayList that event parsed list segments can be added to
-                List<NewsEvent> events = new ArrayList<>();
+            //Try to parse the response string. If there's a problem with the way JSON
+            //is formatted, a JSONException exception object will be thrown.
+            //Catch exception so app doesn't crash, and print the error message to the logs.
+            try {
+                //build a JSON object of NewsEvent features with the corresponding data
+                JSONObject baseJsonResponse = new JSONObject(newsEventJSON);
+                //extract JSONObject with key named "response" (a news event list of results)
+                JSONObject responseResult = baseJsonResponse.getJSONObject("response");
 
-                //Try to parse the response string. If there's a problem with the way JSON
-                //is formatted, a JSONException exception object will be thrown.
-                //Catch exception so app doesn't crash, and print the error message to the logs.
-                try {
-                    //build a JSON object of NewsEvent features with the corresponding data
-                    JSONObject baseJsonResponse = new JSONObject(newsEventJSON);
-                    //extract JSONObject with key named "response" (a news event list of results)
-                    JSONObject responseResult = baseJsonResponse.getJSONObject("response");
+                //For a given event, extract JSONObject with key named "results"
+                //which represents a list of article data
+                JSONArray currentArticles = responseResult.getJSONArray("results");
 
-                    //For a given event, extract JSONObject with key named "results"
-                    //which represents a list of article data
-                    JSONArray currentArticles = responseResult.getJSONArray("results");
+                //For each NewsEvent in newsEventArray, create an {@link NewsEvent} object.
+                //while index i is less than array length, increment i..
+                for (int i = 0; i < currentArticles.length(); i++) {
+                    //extract single newsEvent @ index position (i) from events list
+                    JSONObject currentNewsEvent = currentArticles.getJSONObject(i);
 
-                    //For each NewsEvent in newsEventArray, create an {@link NewsEvent} object.
-                    //while index i is less than array length, increment i..
-                    for (int i = 0; i < currentArticles.length(); i++) {
-                        //extract single newsEvent @ index position (i) from events list
-                        JSONObject currentNewsEvent = currentArticles.getJSONObject(i);
 
-                        //extract string for key named "sectionName"
-                        String sectionName = currentNewsEvent.getString("sectionName");
-                        //extract string for key named "webTitle"
-                        String webTitle = currentNewsEvent.getString("webTitle");
-                        //extract string for key named "webUrl"
-                        String webUrl = currentNewsEvent.getString("webUrl");
-                        //extract string for key named "webPublicationDate"
-                        String webPublicationDate = currentNewsEvent.getString
-                                ("webPublicationDate");
-                        //Get JSON object with key named "fields"
-                        JSONObject jsonObjectFields = currentNewsEvent.getJSONObject("fields");
+                    //extract string for key named "webTitle"
+                    String webTitle = currentNewsEvent.getString("webTitle");
+                    //extract string for key named "sectionName"
+                    String sectionName = currentNewsEvent.getString("sectionName");
+                    //extract string for key named "webUrl"
+                    String webUrl = currentNewsEvent.getString("webUrl");
+                    //extract string for key named "webPublicationDate"
+                    String webPublicationDate = currentNewsEvent.getString
+                            ("webPublicationDate");
+                    //Get JSON object with key named "fields"
+                    JSONObject jsonObjectFields = currentNewsEvent.getJSONObject("fields");
 
-                        for (int a = 0; a < currentNewsEvent.length(); a++) {
-                            JSONObject author = currentNewsEvent.getJSONObject(a);
+                        //extract (contributor) string for key named "byline"
+                        String byline = jsonObjectFields.optString("byline");
 
-                            //extract (contributor) string for key named "webTitle"
-                            String webTitleC = jsonObjectFields.optString("byline");
-
-                            //Create new {@link NewsEvent} object with sectionName, webTitle,
-                            //webUrl, webPublicationDate, and webTitleC (contributor title) from
-                            //JSON response
-                            NewsEvent newsEvent = new NewsEvent(
-                                    sectionName, webTitle, webUrl, webPublicationDate, webTitleC);
-                            //Add newly created {@link newsEvent} to list of events
-                            events.add(newsEvent);
-                        }}
-
-                        //If an error is thrown when executing any of the above statements in the "try"
-                        // block catch exception here, so the app doesn't crash. Print a log message
-                        //with the message from the exception
-                    } catch(JSONException je){
-                        Log.e("QU extractFeatFromJson", "Problem parsing JSON NewsEvent results", je);
+                        //Create new {@link NewsEvent} object with sectionName, webTitle,
+                        //webUrl, webPublicationDate, and byline (author) from
+                        //JSON response
+                        NewsEvent newsEvent = new NewsEvent(
+                                webTitle, sectionName, webUrl, webPublicationDate, byline);
+                        //Add newly created {@link newsEvent} to list of events
+                        events.add(newsEvent);
                     }
 
-                    //Return list of NewsEvents
-                    return events;
+                    //If an error is thrown when executing any of the above statements in the "try"
+                    // block catch exception here, so the app doesn't crash. Print a log message
+                    //with the message from the exception
+                } catch(JSONException je){
+                    Log.e("QU extractFeatFromJson",
+                            "Problem parsing JSON NewsEvent results", je);
                 }
+
+                //Return list of NewsEvents
+                return events;
             }
+        }
 
 

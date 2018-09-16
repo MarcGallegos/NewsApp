@@ -15,6 +15,8 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-caps"
             android:textSize="22sp"
             android:layout_marginTop="4dp"
             android:id="@+id/segment_title"
@@ -41,18 +43,21 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:textColor="@color/textColorSectionName"
+            android:textStyle="bold"
             android:textSize="18sp"
             android:id="@+id/date"
             tools:text="Published Date"/>
 
         <TextView
+            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAllCaps="true"
             android:textColor="@color/textColorSectionName"
-            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:id="@+id/section_name"
             tools:text="Section Name"/>
 

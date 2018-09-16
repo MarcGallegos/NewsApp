@@ -2,6 +2,8 @@
   <dictionary name="kitty">
     <words>
       <w>dataset</w>
+      <w>eventloader</w>
+      <w>newsevent</w>
     </words>
   </dictionary>
 </component>

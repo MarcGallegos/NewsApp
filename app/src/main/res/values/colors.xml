@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="textColorSectionName">#37474f</color>
     <color name="nullDividerColor">#e0e0e0</color>
+    <color name="altBgColor">#f0fff0</color>
 </resources>

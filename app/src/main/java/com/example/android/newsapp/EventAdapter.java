@@ -1,4 +1,7 @@
+package com.example.android.newsapp;
+
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventAdapter extends ArrayAdapter<NewsEvent> {
+
+    private static final String DELIMITER="T";
+    String splitDate;
 
     public EventAdapter(@NonNull Context context,@NonNull ArrayList<NewsEvent> events){
         super(context,0,events);
@@ -33,6 +39,19 @@ public class EventAdapter extends ArrayAdapter<NewsEvent> {
         //Get event data at this position in index
         NewsEvent currentNewsEvent=getItem(position);
 
+        //Get webPublicationDate and store as a variable
+        String origDate=currentNewsEvent.getDate();
+
+        //Check if DELIMITER exists, if not, treat as unknown and state "Unknown Author"
+        if(origDate.contains(DELIMITER)) {
+            String[] parts = origDate.split(DELIMITER);
+            splitDate = parts[0];
+        }else{
+            splitDate="Unknown Author";
+        }
+        //Split string at the capital letter "T" (DELIMITER)
+        //Locate date XML TextView
+
         //Bind to TextView with ID of "segment_title"
         TextView segmentTitleView=listEventView.findViewById(R.id.segment_title);
         //Get view from adapter and set view with segment_title
@@ -45,13 +64,13 @@ public class EventAdapter extends ArrayAdapter<NewsEvent> {
 
         //Bind to TextView with ID of "author"
         TextView authorView=listEventView.findViewById(R.id.author);
-        //Get view from adapter and set view with time
-        authorView.setText(currentNewsEvent.getAuthor());
+        //Get view from adapter and set view with author
+        authorView.setText(currentNewsEvent.getByline());
 
         //Bind TextView with ID of "date"
         TextView dateView=listEventView.findViewById(R.id.date);
         //Get view from adapter and set view with date
-        dateView.setText(currentNewsEvent.getDate());
+        dateView.setText(splitDate);
 
         return listEventView;
     }
