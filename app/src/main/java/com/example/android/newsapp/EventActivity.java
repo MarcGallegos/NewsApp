@@ -36,7 +36,7 @@ implements LoaderCallbacks<List<NewsEvent>> {
      */
     private static final String GUARDIAN_REQUEST_URL =
             "https://content.guardianapis.com/search?q=xbox%2Cplaystation%2Cnintendo%2Cemulator" +
-                    "&show-fields=all&page-size=200&api-key=e5904fc3-41f8-4210-a8d5-f67da2cb31b9";
+                    "&show-fields=all&page-size=200&api-key=";
 
     /**
      * Constant value for NewsEvent Loader I.D. Can be any integer as is used for >1 loader
