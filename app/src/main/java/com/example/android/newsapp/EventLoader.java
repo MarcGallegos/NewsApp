@@ -8,6 +8,7 @@ import java.util.List;
 
 public class EventLoader extends AsyncTaskLoader<List<NewsEvent>> {
 
+    
     //Tag for Log Messages
     private static final String LOG_TAG = EventLoader.class.getName();
 
@@ -30,6 +31,7 @@ public class EventLoader extends AsyncTaskLoader<List<NewsEvent>> {
         Log.i(LOG_TAG,"EventLoader: onStart method CALLED");
     }
 
+
     /**This is done in a background thread as we do not perform blocking process in UI thread*/
     @Override
     public List<NewsEvent> loadInBackground(){
@@ -42,6 +44,4 @@ public class EventLoader extends AsyncTaskLoader<List<NewsEvent>> {
         List<NewsEvent>events=QueryUtils.fetchNewsEventData(mUrl);
         return events;
     }
-
-
 }
