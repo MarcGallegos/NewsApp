@@ -1,6 +1,55 @@
 <resources>
+    <!-- Application Title -->
     <string name="app_name">News App</string>
-    <string name="no_internet_connection">NO INTERNET CONNECTION</string>
-    <string name="no_news">NO NEWS EVENTS FOUND</string>
-    <string name="unknown_auth">Unknown Author</string>
+
+    <!-- Strings for NO RESOURCE Conditions-->
+    <string name="no_internet_connection">NO INTERNET CONNECTION, try again later.</string>
+    <string name="no_news">NO NEWS EVENTS FOUND, try again later.</string>
+
+    <!-- Strings for Placeholder Text -->
+
+    <!-- Rubric required Settings Menu Item-->
+    <string name="settings_menu_item">Settings</string>
+    <!-- Settings page title-->
+    <string name="settings_title">News Event Settings</string>
+
+    <!-- Strings for Number Of Pages Preference-->
+    <string name="settings_num_of_pgs_label">Number of Pages</string>
+    <string name="settings_num_of_pgs_key" translatable="false">size</string>
+    <string name="settings_num_of_pgs_default" translatable="false">200</string>
+
+    <!-- Strings for Order-By Preference -->
+    <string name="settings_order_by_label">Order By Subject</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">
+        @string/settings_order_by_subj_default
+    </string>
+
+    <string name="settings_order_by_subject_label">Game Platform</string>
+    <string name="settings_order_by_subj_key" translatable="false">q</string>
+    <string name="settings_order_by_subj_default">@string/settings_order_by_subj_all_value</string>
+
+    <string name="settings_order_by_subj_all_label" translatable="false">
+        Multi-Platform Gaming News</string>
+    <string name="settings_order_by_subj_xbx_label">XBOX News</string>
+    <string name="settings_order_by_subj_ps_label">Playstation News</string>
+    <string name="settings_order_by_subj_nin_label">Nintendo News</string>
+    <string name="settings_order_by_subj_pc_label">PC Gaming/Game News</string>
+    <string name="settings_order_by_subj_and_label">Android News</string>
+    <string name="settings_order_by_subj_iphone_label">iPhone News</string>
+    <string name="settings_order_by_subj_ar_label">Augmented Reality (AR)</string>
+    <string name="settings_order_by_subj_vr_label">Virtual Reality</string>
+
+    <string name="settings_order_by_subj_all_value" translatable="false">
+        xbox,playstation,nintendo,pc&amp;games,android,iphone,virtual&amp;reality,
+        augmented&amp;reality</string>
+    <string name="settings_order_by_subj_xbx_value">xbox</string>
+    <string name="settings_order_by_subj_ps_value">playstation</string>
+    <string name="settings_order_by_subj_nin_value">nintendo</string>
+    <string name="setting_order_by_subj_pc_value">pc&amp;gaming,pc&amp;games</string>
+    <string name="settings_order_by_subj_and_value">android</string>
+    <string name="settings_order_by_subj_ios_value">iphone</string>
+    <string name="settings_order_by_subj_ar_value">augmented&amp;reality</string>
+    <string name="settings_order_by_subj_vr_value">virtual&amp;reality</string>
+
 </resources>
