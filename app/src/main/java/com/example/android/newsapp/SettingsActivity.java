@@ -16,7 +16,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.settings_activity);
     }
 
-    public static class NewsEventPreferenceFrag extends PreferenceFragment{
+    public static class NewsEventPreferenceFrag extends PreferenceFragment
     implements Preference.OnPreferenceChangeListener{
 
         //Update UI (pref summary) when settings activity is launched in onCreate()
@@ -26,8 +26,8 @@ public class SettingsActivity extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings_main);
 
             //Find preference desired, then bind the current preference value to be displayed
-            Preference PAGE_SIZE=findPreference(getString(R.string.settings_num_of_pgs_key));
-            bindPreferenceSummaryToValue(PAGE_SIZE);
+            Preference minEvents=findPreference(getString(R.string.settings_num_of_pgs_key));
+            bindPreferenceSummaryToValue(minEvents);
 
             Preference orderBy=findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);
@@ -53,7 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         //Helper Method, takes in a preference as param, and uses onPreferenceChangeListener to set
         //the current EventPreferenceFragment instance to listen for passed in pref changes.
         private void bindPreferenceSummaryToValue(Preference preference){
-                findPreference().setOnPreferenceChangeListener(this);
+                preference.setOnPreferenceChangeListener(this);
                 //Read curr value of prefs stored in SharedPreferences on the device & display it in
                 //the preference summary to show user current pref value.
                 SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences
@@ -64,4 +64,4 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
     }
-}
+

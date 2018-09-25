@@ -105,18 +105,23 @@ implements LoaderCallbacks<List<NewsEvent>> {
                 getString(R.string.settings_order_by_default));
 
         // pull user prefs from PAGE_SIZE constant variable to use as "page-size" parameter
-        String PAGE_SIZE=sharedPrefs(R.string.settings_num_of_pgs_key,
-                R.string.settings_order_by_default);
-//        String PAGE_SIZE=sharedPrefs.getString(getString(R.string.settings_num_of_pgs_key,
-//                R.string.settings_order_by_default));
+//        String minEvents=sharedPrefs(R.string.settings_num_of_pgs_key,
+//                R.string.settings_order_by_default);
+        String minEvents=sharedPrefs.getString(getString(R.string.settings_num_of_pgs_key,
+                R.string.settings_order_by_default));
 
         Uri baseUri=Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder=baseUri.buildUpon();
 
+        //Append Query param & it's respective value.
         uriBuilder.appendQueryParameter("subj-chosen", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "all");
-        uriBuilder.appendQueryParameter("page-size", PAGE_SIZE);
+        uriBuilder.appendQueryParameter("page-size", minEvents);
         uriBuilder.appendQueryParameter("api-key", "" );//TODO:<<<<<<ADD TESTERS API-KEY inside" "
+        //Create new loader and return completed URI:
+        //"https://content.guardianapis.com/search?q=xbox,playstation,nintendo,pc&amp;gaming,pc&amp;
+        //games,android,iphone,augmented&amp;reality,virtual&amp;reality&show-fields=all&page-size=
+        //200&api-key=TESTER'S API-KEY
         return new EventLoader(this,uriBuilder.toString());
     }
 
