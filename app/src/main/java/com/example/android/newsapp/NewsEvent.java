@@ -3,13 +3,13 @@ package com.example.android.newsapp;
 public class NewsEvent {
     private String segmentTitle, sectionName, segmentURL, date, byline;
 
-    public NewsEvent(String segmentTitle, String sectionName, String author, String date,
-                     String segmentURL){
+    public NewsEvent(String segmentTitle, String sectionName, String segmentURL, String date,
+                     String author){
         this.segmentTitle=segmentTitle;
         this.sectionName=sectionName;
-        this.byline=author;
-        this.date=date;
         this.segmentURL=segmentURL;
+        this.date=date;
+        this.byline=author;
     }
 
     public String getSegmentTitle() {

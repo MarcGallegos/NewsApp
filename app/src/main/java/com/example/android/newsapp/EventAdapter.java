@@ -10,68 +10,79 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.android.newsapp.R;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class EventAdapter extends ArrayAdapter<NewsEvent> {
 
-    private static final String DELIMITER="T";
-    String splitDate;
 
-    public EventAdapter(@NonNull Context context,@NonNull ArrayList<NewsEvent> events){
-        super(context,0,events);
+    public EventAdapter(@NonNull Context context, @NonNull ArrayList<NewsEvent> events) {
+        super(context, 0, events);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //store convertView as variable of View type named listEventView
-        View listEventView=convertView;
+        View listEventView = convertView;
 
         //check if existing view is in use else inflate view
-        if (listEventView==null){
-            listEventView=LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_segment,parent,false);
+        if (listEventView == null) {
+            listEventView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.list_segment, parent, false);
         }
 
         //Get event data at this position in index
-        NewsEvent currentNewsEvent=getItem(position);
+        NewsEvent currentNewsEvent = getItem(position);
 
-        //Get webPublicationDate and store as a variable
-        String origDate=currentNewsEvent.getDate();
-
-        //Check if DELIMITER exists, if not, treat as unknown and state "Unknown Author"
-        if(origDate.contains(DELIMITER)) {
-            String[] parts = origDate.split(DELIMITER);
-            splitDate = parts[0];
-        }else{
-            splitDate="Unknown Author";
-        }
-        //Split string at the capital letter "T" (DELIMITER)
-        //Locate date XML TextView
+        //Get the date for formatting"
+        String formattedDate = formatDate(currentNewsEvent.getDate());
+        //Bind TextView with ID of "date"
+        TextView dateView = listEventView.findViewById(R.id.date);
+        //Get view from adapter and set view with date
+        dateView.setText(formattedDate);
 
         //Bind to TextView with ID of "segment_title"
-        TextView segmentTitleView=listEventView.findViewById(R.id.segment_title);
+        TextView segmentTitleView = listEventView.findViewById(R.id.segment_title);
         //Get view from adapter and set view with segment_title
         segmentTitleView.setText(currentNewsEvent.getSegmentTitle());
 
         //Bind to TextView with ID of "section_name"
-        TextView sectionNameView=listEventView.findViewById(R.id.section_name);
+        TextView sectionNameView = listEventView.findViewById(R.id.section_name);
         //Get view from adapter and set view with section_name
         sectionNameView.setText(currentNewsEvent.getSectionName());
 
         //Bind to TextView with ID of "author"
-        TextView authorView=listEventView.findViewById(R.id.author);
+        TextView authorView = listEventView.findViewById(R.id.author);
         //Get view from adapter and set view with author
         authorView.setText(currentNewsEvent.getByline());
 
-        //Bind TextView with ID of "date"
-        TextView dateView=listEventView.findViewById(R.id.date);
-        //Get view from adapter and set view with date
-        dateView.setText(splitDate);
-
+        //Return View
         return listEventView;
+    }
+
+    //Return formatted date string i.e "May 1, 1978" from a {@link chronObject}
+    public String formatDate(String date) {
+
+        //Create SimpleDateFormat object with pattern in response
+        final SimpleDateFormat dateFormatter=
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'",
+                Locale.getDefault());
+        //Set date_out to null, attempt to parse date or catch ParseException
+        Date date_out = null;
+        try {
+            date_out = dateFormatter.parse(date);
+        } catch (final ParseException e) {
+            e.printStackTrace();
+        }
+        //Format date into abbreviated date pattern
+        final SimpleDateFormat outputFormatter=
+                new SimpleDateFormat("MMM dd ''yy", Locale.US);
+        //Return Formatted Date
+        return outputFormatter.format(date_out);
     }
 }

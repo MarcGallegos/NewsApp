@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EventLoader extends AsyncTaskLoader<List<NewsEvent>> {
 
-    
+
     //Tag for Log Messages
     private static final String LOG_TAG = EventLoader.class.getName();
 

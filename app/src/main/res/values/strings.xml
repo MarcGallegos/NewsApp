@@ -6,17 +6,12 @@
     <string name="no_internet_connection">NO INTERNET CONNECTION, try again later.</string>
     <string name="no_news">NO NEWS EVENTS FOUND, try again later.</string>
 
-    <!-- Strings for Placeholder Text -->
+    <!-- TODO: Extract Strings from Placeholder Text -->
 
     <!-- Rubric required Settings Menu Item-->
     <string name="settings_menu_item">Settings</string>
     <!-- Settings page title-->
     <string name="settings_title">News Event Settings</string>
-
-    <!-- Strings for Number Of Pages Preference-->
-    <string name="settings_num_of_pgs_label">Number of Pages</string>
-    <string name="settings_num_of_pgs_key" translatable="false">size</string>
-    <string name="settings_num_of_pgs_default" translatable="false">200</string>
 
     <!-- Strings for Order-By Preference -->
     <string name="settings_order_by_label">Order By Subject</string>
@@ -24,10 +19,17 @@
     <string name="settings_order_by_default" translatable="false">
         @string/settings_order_by_subj_default
     </string>
-
+    <!-- Strings for Order-By Number Of Pages Preference-->
+    <string name="settings_num_of_pgs_label">Number of Pages</string>
+    <string name="settings_num_of_pgs_key" translatable="false">size</string>
+    <string name="settings_num_of_pgs_default" translatable="false">200</string>
+    <string name="settings_num_of_pgs_value">size</string>
+    <!-- Strings for Order-By Subject Preference-->
     <string name="settings_order_by_subject_label">Game Platform</string>
     <string name="settings_order_by_subj_key" translatable="false">q</string>
     <string name="settings_order_by_subj_default">@string/settings_order_by_subj_all_value</string>
+
+    <string name="settings_order_by_subject_value">@string/settings_order_by_subj_all_value</string>
 
     <string name="settings_order_by_subj_all_label" translatable="false">
         Multi-Platform Gaming News</string>

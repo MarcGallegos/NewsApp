@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+
+    <!--EditText for ordering by number_of_pgs to display-->
+    <EditTextPreference
+        android:defaultValue="@string/settings_num_of_pgs_default"
+        android:inputType="numberDecimal"
+        android:key="@string/settings_num_of_pgs_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_num_of_pgs_label" />
+
+    <!-- "entries" attrib is the human-readable array to present as the list,
+        and uses string array in res/values/arrays.xml
+        "entryValues" attrib is the array to find/store value to save for a preference when
+        an entry from "entries" is selected.-->
+    <ListPreference
+        android:defaultValue="@string/settings_order_by_subj_default"
+        android:entries="@array/subj_labels"
+        android:entryValues="@array/subj_values"
+        android:key="@string/settings_order_by_subj_key"
+        android:title="@string/settings_order_by_label"
+        />
+
+</PreferenceScreen>

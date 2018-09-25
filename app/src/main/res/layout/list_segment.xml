@@ -2,34 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp">
+    style="@style/list_seg_master_layout">
 
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-caps"
-            android:textSize="22sp"
-            android:layout_marginTop="4dp"
-            android:id="@+id/segment_title"
-            tools:text="Article Title preview example after ListView loading and inflation"/>
+        android:id="@+id/segment_title"
+            tools:text="Article Title preview example after ListView loading and inflation"
+        style="@style/article_title_textvu" />
 
     <TextView
-        android:layout_marginLeft="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/textColorSectionName"
-        android:textSize="18sp"
         android:id="@+id/author"
-        tools:text="Author of News Article"/>
+        tools:text="Author of News Article"
+        style="@style/author_txtvu" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,28 +21,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/textColorSectionName"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:id="@+id/date"
-            tools:text="Published Date"/>
+            tools:text="Published Date"
+            style="@style/date_txtvu" />
 
         <TextView
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAllCaps="true"
-            android:textColor="@color/textColorSectionName"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:id="@+id/section_name"
-            tools:text="Section Name"/>
+            tools:text="Section Name"
+            style="@style/sect_name_txtvu" />
 
     </RelativeLayout>
 
