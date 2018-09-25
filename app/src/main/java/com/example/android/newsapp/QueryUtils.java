@@ -168,7 +168,6 @@ public final class QueryUtils {
                     //extract single newsEvent @ index position (i) from events list
                     JSONObject currentNewsEvent = currentArticles.getJSONObject(i);
 
-
                     //extract string for key named "webTitle"
                     String webTitle = currentNewsEvent.getString("webTitle");
                     //extract string for key named "sectionName"
@@ -205,5 +204,3 @@ public final class QueryUtils {
                 return events;
             }
         }
-
-
