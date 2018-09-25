@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="settings_order_by_labels">
-      <item>@string/settings_order_by_subject_label</item>
-        <item>@string/settings_num_of_pgs_label</item>
-    </string-array>
+    <!--<string-array name="settings_order_by_labels">-->
+      <!--<item>@string/settings_order_by_subject_label</item>-->
+        <!--<item>@string/settings_num_of_pgs_label</item>-->
+    <!--</string-array>-->
 
-    <string-array name="settings_order_by_values">
-     <item>@string/settings_order_by_subject_value</item>
-        <item>@string/settings_num_of_pgs_value</item>
-    </string-array>
+    <!--<string-array name="settings_order_by_values">-->
+     <!--<item>@string/settings_order_by_subject_value</item>-->
+        <!--<item>@string/settings_num_of_pgs_value</item>-->
+    <!--</string-array>-->
 
     <string-array name="subj_labels">
         <item>@string/settings_order_by_subj_all_label</item>

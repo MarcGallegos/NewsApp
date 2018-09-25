@@ -116,7 +116,7 @@ implements LoaderCallbacks<List<NewsEvent>> {
         uriBuilder.appendQueryParameter("subj-chosen", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "all");
         uriBuilder.appendQueryParameter("page-size", PAGE_SIZE);
-        uriBuilder.appendQueryParameter("api-key", "" );//TODO: ADD TESTERS API-KEY in empty value
+        uriBuilder.appendQueryParameter("api-key", "" );//TODO:<<<<<<ADD TESTERS API-KEY inside" "
         return new EventLoader(this,uriBuilder.toString());
     }
 

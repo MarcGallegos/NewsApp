@@ -14,21 +14,25 @@
     <string name="settings_title">News Event Settings</string>
 
     <!-- Strings for Order-By Preference -->
-    <string name="settings_order_by_label">Order By Subject</string>
+    <string name="settings_order_by_label">Order Articles By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
     <string name="settings_order_by_default" translatable="false">
         @string/settings_order_by_subj_default
     </string>
+
     <!-- Strings for Order-By Number Of Pages Preference-->
     <string name="settings_num_of_pgs_label">Number of Pages</string>
     <string name="settings_num_of_pgs_key" translatable="false">size</string>
     <string name="settings_num_of_pgs_default" translatable="false">200</string>
-    <string name="settings_num_of_pgs_value">size</string>
+
     <!-- Strings for Order-By Subject Preference-->
     <string name="settings_order_by_subject_label">Game Platform</string>
     <string name="settings_order_by_subj_key" translatable="false">q</string>
     <string name="settings_order_by_subj_default">@string/settings_order_by_subj_all_value</string>
 
+    <!--Label/Value for Order-By Page Size menu option -->
+    <string name="settings_num_of_pgs_value">size</string>
+    <!--Label/Value for Order-By Subject menu option -->
     <string name="settings_order_by_subject_value">@string/settings_order_by_subj_all_value</string>
 
     <string name="settings_order_by_subj_all_label" translatable="false">
