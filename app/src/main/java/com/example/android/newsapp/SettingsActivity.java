@@ -43,10 +43,10 @@ public class SettingsActivity extends AppCompatActivity {
                     int prefIndex=listPreference.findIndexOfValue(stringValue);
                     if (prefIndex>=0){
                         CharSequence[] labels=listPreference.getEntries();
-                        ((ListPreference) preference).setSummary(labels[prefIndex]);
+                        preference.setSummary(labels[prefIndex]);
                     }
                 }else{
-                    findPreference().setSummary(stringValue);
+                    preference.setSummary(stringValue);
                 }
                 return true;
         }
