@@ -107,8 +107,8 @@ implements LoaderCallbacks<List<NewsEvent>> {
         // pull user prefs from PAGE_SIZE constant variable to use as "page-size" parameter
 //        String minEvents=sharedPrefs(R.string.settings_num_of_pgs_key,
 //                R.string.settings_order_by_default);
-        String minEvents=sharedPrefs.getString(getString(R.string.settings_num_of_pgs_key,
-                R.string.settings_order_by_default));
+        String minEvents=sharedPrefs.getString(getString(R.string.settings_num_of_pgs_key),
+                getString(R.string.settings_order_by_default));
 
         Uri baseUri=Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder=baseUri.buildUpon();
