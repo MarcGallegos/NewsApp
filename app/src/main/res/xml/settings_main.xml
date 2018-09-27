@@ -15,10 +15,10 @@
         "entryValues" attrib is the array to find/store value to save for a preference when
         an entry from "entries" is selected.-->
     <ListPreference
-        android:defaultValue="@string/settings_order_by_subj_default"
+        android:defaultValue="@string/settings_order_by_default"
         android:entries="@array/subj_labels"
         android:entryValues="@array/subj_values"
-        android:key="@string/settings_order_by_subj_key"
+        android:key="@string/settings_order_by_key"
         android:title="@string/settings_order_by_label"
         />
 

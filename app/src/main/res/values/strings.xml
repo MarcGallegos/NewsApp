@@ -1,6 +1,6 @@
 <resources>
     <!-- Application Title -->
-    <string name="app_name">News App</string>
+    <string name="app_name">Gamer News App</string>
 
     <!-- Strings for NO RESOURCE Conditions-->
     <string name="no_internet_connection">NO INTERNET CONNECTION, try again later.</string>
@@ -21,7 +21,7 @@
     </string>
 
     <!-- Value for Order-By Page Size menu options -->
-    <string name="settings_num_of_pgs_value">size</string>
+    <string name="settings_num_of_pgs_value">0</string>
     <!-- Value for Order-By Subject menu option -->
     <string name="settings_order_by_subject_value">@string/settings_order_by_subj_all_value</string>
 
