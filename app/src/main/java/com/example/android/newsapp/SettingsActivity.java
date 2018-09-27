@@ -39,10 +39,9 @@ public class SettingsActivity extends AppCompatActivity {
             //The code in this method takes care of updating the displayed preference
             //summary after it has been changed
             String stringValue=value.toString();
-            preference.setSummary(stringValue);
             if(preference instanceof ListPreference){
                 ListPreference listPreference=(ListPreference)preference;
-                int prefIndex=listPreference.findIndexOfValue(stringValue);
+                int prefIndex=listPreference.findIndexOfValue((stringValue));
                 if (prefIndex>=0){
                     CharSequence[] labels=listPreference.getEntries();
                     preference.setSummary(labels[prefIndex]);
