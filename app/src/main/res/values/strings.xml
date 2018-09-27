@@ -40,19 +40,17 @@
     <string name="settings_order_by_subj_xbx_label">XBOX News</string>
     <string name="settings_order_by_subj_ps_label">Playstation News</string>
     <string name="settings_order_by_subj_nin_label">Nintendo News</string>
-    <string name="settings_order_by_subj_pc_label">PC Gaming/Game News</string>
     <string name="settings_order_by_subj_and_label">Android News</string>
     <string name="settings_order_by_subj_iphone_label">iPhone News</string>
     <string name="settings_order_by_subj_ar_label">Augmented Reality (AR)</string>
-    <string name="settings_order_by_subj_vr_label">Virtual Reality</string>
+    <string name="settings_order_by_subj_vr_label">Virtual Reality (VR)</string>
 
     <string name="settings_order_by_subj_all_value" translatable="false">
-        xbox,playstation,nintendo,pc&amp;games,android,iphone,virtual&amp;reality,
-        augmented&amp;reality</string>
+        xbox&amp;playstation&amp;nintendo&amp;android&amp;iphone&amp;
+        virtual&amp;reality&amp;augmented%26reality</string>
     <string name="settings_order_by_subj_xbx_value">xbox</string>
     <string name="settings_order_by_subj_ps_value">playstation</string>
     <string name="settings_order_by_subj_nin_value">nintendo</string>
-    <string name="setting_order_by_subj_pc_value">pc&amp;gaming,pc&amp;games</string>
     <string name="settings_order_by_subj_and_value">android</string>
     <string name="settings_order_by_subj_ios_value">iphone</string>
     <string name="settings_order_by_subj_ar_value">augmented&amp;reality</string>

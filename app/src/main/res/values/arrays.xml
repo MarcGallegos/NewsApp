@@ -15,7 +15,6 @@
         <item>@string/settings_order_by_subj_xbx_label</item>
         <item>@string/settings_order_by_subj_ps_label</item>
         <item>@string/settings_order_by_subj_nin_label</item>
-        <item>@string/settings_order_by_subj_pc_label</item>
         <item>@string/settings_order_by_subj_and_label</item>
         <item>@string/settings_order_by_subj_iphone_label</item>
         <item>@string/settings_order_by_subj_ar_label</item>
@@ -27,7 +26,6 @@
         <item>@string/settings_order_by_subj_xbx_value</item>
         <item>@string/settings_order_by_subj_ps_value</item>
         <item>@string/settings_order_by_subj_nin_value</item>
-        <item>@string/setting_order_by_subj_pc_value</item>
         <item>@string/settings_order_by_subj_and_label</item>
         <item>@string/settings_order_by_subj_iphone_label</item>
         <item>@string/settings_order_by_subj_ar_label</item>

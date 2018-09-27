@@ -39,7 +39,7 @@ implements LoaderCallbacks<List<NewsEvent>> {
      * URL Constant for data retrieval from The Guardian dataset
      */
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search";
+            "https://content.guardianapis.com/search?";
 
     /**
      * Constant value for NewsEvent Loader I.D. Can be any integer as is used for >1 loader
@@ -114,7 +114,7 @@ implements LoaderCallbacks<List<NewsEvent>> {
         Uri.Builder uriBuilder=baseUri.buildUpon();
 
         //Append Query param & it's respective value.
-        uriBuilder.appendQueryParameter("subj-chosen", orderBy);
+        uriBuilder.appendQueryParameter("q", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "all");
         uriBuilder.appendQueryParameter("page-size", minEvents);
         uriBuilder.appendQueryParameter("api-key", "" );//TODO:<<<<<<ADD TESTERS API-KEY inside" "

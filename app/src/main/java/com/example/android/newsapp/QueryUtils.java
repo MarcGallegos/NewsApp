@@ -97,7 +97,7 @@ public final class QueryUtils {
                     jsonResponse=readFromStream(inputStream);
                     Log.i(LOG_TAG,
                             "QueryUtils makeHttpRequest:" +
-                                    " SUCCESSFULLY CONNECTED JSON RESPONSE RETRIEVED");
+                                    " SUCCESSFULLY CONNECTED JSON RESPONSE RETRIEVED from:"+ url);
                 }else{
                     Log.e(LOG_TAG,"QueryUtils makeHttpRequest:" +
                             " ERROR!!! RESPONSE CODE:" + urlConnection.getResponseCode());
