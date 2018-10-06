@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<string-array name="settings_order_by_labels">-->
-      <!--<item>@string/settings_order_by_subject_label</item>-->
-        <!--<item>@string/settings_num_of_pgs_label</item>-->
-    <!--</string-array>-->
-
-    <!--<string-array name="settings_order_by_values">-->
-     <!--<item>@string/settings_order_by_subject_value</item>-->
-        <!--<item>@string/settings_num_of_pgs_value</item>-->
-    <!--</string-array>-->
 
     <string-array name="subj_labels">
         <item>@string/settings_order_by_subj_all_label</item>
@@ -19,6 +10,7 @@
         <item>@string/settings_order_by_subj_iphone_label</item>
         <item>@string/settings_order_by_subj_ar_label</item>
         <item>@string/settings_order_by_subj_vr_label</item>
+        <item>@string/settings_order_by_subj_arc_label</item>
     </string-array>
 
     <string-array name="subj_values">
@@ -26,10 +18,11 @@
         <item>@string/settings_order_by_subj_xbx_value</item>
         <item>@string/settings_order_by_subj_ps_value</item>
         <item>@string/settings_order_by_subj_nin_value</item>
-        <item>@string/settings_order_by_subj_and_label</item>
-        <item>@string/settings_order_by_subj_iphone_label</item>
-        <item>@string/settings_order_by_subj_ar_label</item>
-        <item>@string/settings_order_by_subj_vr_label</item>
+        <item>@string/settings_order_by_subj_and_value</item>
+        <item>@string/settings_order_by_subj_iphone_value</item>
+        <item>@string/settings_order_by_subj_ar_value</item>
+        <item>@string/settings_order_by_subj_vr_value</item>
+        <item>@string/settings_order_by_subj_arc_value</item>
     </string-array>
 
 </resources>

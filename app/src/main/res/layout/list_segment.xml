@@ -6,12 +6,12 @@
 
     <TextView
         android:id="@+id/segment_title"
-            tools:text="Article Title preview example after ListView loading and inflation"
+            tools:text="@string/seg_title_tool_text"
         style="@style/article_title_textvu" />
 
     <TextView
         android:id="@+id/author"
-        tools:text="Author of News Article"
+        tools:text="@string/author_tool_text"
         style="@style/author_txtvu" />
 
     <RelativeLayout
@@ -22,12 +22,12 @@
 
         <TextView
             android:id="@+id/date"
-            tools:text="Published Date"
+            tools:text="@string/date_tool_text"
             style="@style/date_txtvu" />
 
         <TextView
             android:id="@+id/section_name"
-            tools:text="Section Name"
+            tools:text="@string/sec_name_tool_text"
             style="@style/sect_name_txtvu" />
 
     </RelativeLayout>

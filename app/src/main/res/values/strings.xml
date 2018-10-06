@@ -1,12 +1,17 @@
 <resources>
     <!-- Application Title -->
-    <string name="app_name">Gamer News App</string>
+    <string name="app_name">Gamer\'s Edge News</string>
 
     <!-- Strings for NO RESOURCE Conditions-->
     <string name="no_internet_connection">NO INTERNET CONNECTION, try again later.</string>
     <string name="no_news">NO NEWS EVENTS FOUND, try again later.</string>
 
-    <!-- TODO: Extract Strings from Placeholder Text -->
+    <!-- Placeholder Text Strings-->
+    <string name="seg_title_tool_text">
+        Article Title preview example after ListView loading and inflation</string>
+    <string name="author_tool_text">Author of News Article</string>
+    <string name="date_tool_text">Date Article First Published</string>
+    <string name="sec_name_tool_text">Section Name</string>
 
     <!-- Rubric required Settings Menu Item-->
     <string name="settings_menu_item">Settings</string>
@@ -26,34 +31,36 @@
     <string name="settings_order_by_subject_value">@string/settings_order_by_subj_all_value</string>
 
     <!-- Strings for Order-By Number Of Pages Preference-->
-    <string name="settings_num_of_pgs_label">Number of Pages</string>
+    <string name="settings_num_of_pgs_label" translatable="false">Number of News Articles</string>
     <string name="settings_num_of_pgs_key" translatable="false">page-size</string>
     <string name="settings_num_of_pgs_default" translatable="false">200</string>
 
     <!-- Strings for Order-By Subject Preference-->
-    <string name="settings_order_by_subject_label">Game Platform</string>
+    <string name="settings_order_by_subject_label" translatable="false">Gaming Platform</string>
     <string name="settings_order_by_subj_key" translatable="false">q</string>
-    <string name="settings_order_by_subj_default">@string/settings_order_by_subj_all_value</string>
+    <string name="settings_order_by_subj_default" translatable="false">
+        @string/settings_order_by_subj_all_value</string>
 
     <string name="settings_order_by_subj_all_label" translatable="false">
         Multi-Platform Gaming News</string>
-    <string name="settings_order_by_subj_xbx_label">XBOX News</string>
-    <string name="settings_order_by_subj_ps_label">Playstation News</string>
-    <string name="settings_order_by_subj_nin_label">Nintendo News</string>
-    <string name="settings_order_by_subj_and_label">Android News</string>
-    <string name="settings_order_by_subj_iphone_label">iPhone News</string>
-    <string name="settings_order_by_subj_ar_label">Augmented Reality (AR)</string>
-    <string name="settings_order_by_subj_vr_label">Virtual Reality (VR)</string>
+    <string name="settings_order_by_subj_xbx_label" translatable="false">XBOX Gamer News</string>
+    <string name="settings_order_by_subj_ps_label" translatable="false">Playstation Gamer News</string>
+    <string name="settings_order_by_subj_nin_label" translatable="false">Nintendo Gamer News</string>
+    <string name="settings_order_by_subj_and_label" translatable="false">Android General News</string>
+    <string name="settings_order_by_subj_iphone_label" translatable="false">iPhone General News</string>
+    <string name="settings_order_by_subj_ar_label" translatable="false">Augmented Reality (AR) News</string>
+    <string name="settings_order_by_subj_vr_label" translatable="false">Virtual Reality (VR) News</string>
+    <string name="settings_order_by_subj_arc_label" translatable="false">Arcade News</string>
 
     <string name="settings_order_by_subj_all_value" translatable="false">
-        xbox&amp;playstation&amp;nintendo&amp;android&amp;iphone&amp;
-        virtual&amp;reality&amp;augmented%26reality</string>
-    <string name="settings_order_by_subj_xbx_value">xbox</string>
-    <string name="settings_order_by_subj_ps_value">playstation</string>
-    <string name="settings_order_by_subj_nin_value">nintendo</string>
-    <string name="settings_order_by_subj_and_value">android</string>
-    <string name="settings_order_by_subj_ios_value">iphone</string>
-    <string name="settings_order_by_subj_ar_value">augmented&amp;reality</string>
-    <string name="settings_order_by_subj_vr_value">virtual&amp;reality</string>
+       xbox%2Candroid%2Cplaystation%2Cnintendo</string>
+    <string name="settings_order_by_subj_xbx_value" translatable="false">xbox</string>
+    <string name="settings_order_by_subj_ps_value" translatable="false">playstation</string>
+    <string name="settings_order_by_subj_nin_value" translatable="false">nintendo</string>
+    <string name="settings_order_by_subj_and_value" translatable="false">android</string>
+    <string name="settings_order_by_subj_iphone_value" translatable="false">iphone</string>
+    <string name="settings_order_by_subj_ar_value" translatable="false">"augmented%20AND%20reality"%20AND%20AR</string>
+    <string name="settings_order_by_subj_vr_value" translatable="false">virtual%20AND%20reality"%20AND%20VR</string>
+    <string name="settings_order_by_subj_arc_value" translatable="false">arcade&amp;pinball</string>
 
 </resources>

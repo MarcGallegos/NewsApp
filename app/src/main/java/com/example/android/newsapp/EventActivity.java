@@ -43,8 +43,7 @@ implements LoaderCallbacks<List<NewsEvent>> {
 
     /**
      * Constant value for NewsEvent Loader I.D. Can be any integer as is used for >1 loader
-     * logs will bear loader number 42 as practice for logging multiple loaders and
-     * as we are using the Guardian API, also as a throwback to Guardians of the Galaxy
+     * logs will bear loader number 42 as practice for logging multiple loaders
      */
     private static final int NEWSEVENT_LOADER_ID = 42;
 
@@ -105,8 +104,6 @@ implements LoaderCallbacks<List<NewsEvent>> {
                 getString(R.string.settings_order_by_default));
 
         // pull user prefs from PAGE_SIZE constant variable to use as "page-size" parameter
-//        String minEvents=sharedPrefs(R.string.settings_num_of_pgs_key,
-//                R.string.settings_order_by_default);
         String minEvents=sharedPrefs.getString(getString(R.string.settings_num_of_pgs_key),
                 getString(R.string.settings_order_by_default));
 
@@ -117,16 +114,16 @@ implements LoaderCallbacks<List<NewsEvent>> {
         uriBuilder.appendQueryParameter("q", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "all");
         uriBuilder.appendQueryParameter("page-size", minEvents);
-        uriBuilder.appendQueryParameter("api-key", "" );//TODO:<<<<<<ADD TESTERS API-KEY inside" "
-        //Create new loader and return completed URI:
-        //"https://content.guardianapis.com/search?q=xbox,playstation,nintendo,pc&amp;gaming,pc&amp;
-        //games,android,iphone,augmented&amp;reality,virtual&amp;reality&show-fields=all&page-size=
-        //200&api-key=TESTER'S API-KEY
+        uriBuilder.appendQueryParameter("api-key", "" );  //TODO:<<<<<<ADD TESTERS API-KEY inside empty quotes
+        //Create new loader and return completed built URI:
         return new EventLoader(this,uriBuilder.toString());
     }
 
     @Override
     public void onLoadFinished(Loader<List<NewsEvent>> loader, List<NewsEvent> events) {
+
+        //Purge adapter of any previous NewsEvent data
+        mAdapter.clear();
 
         //Hide loading indicator as data has been loaded
         View progressBar = findViewById(R.id.indeterminateBar);
@@ -136,6 +133,10 @@ implements LoaderCallbacks<List<NewsEvent>> {
         ConnectivityManager conman =
                 (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = conman.getActiveNetworkInfo();
+
+        //Purge adapter of any previous NewsEvent data
+        mAdapter.clear();
+
         if (networkInfo == null) {
             //state No Internet Connection
             mEmptyStateTextView.setText(R.string.no_internet_connection);
@@ -144,8 +145,6 @@ implements LoaderCallbacks<List<NewsEvent>> {
             mEmptyStateTextView.setText(R.string.no_news);
         }
 
-        //Purge adapter of any previous NewsEvent data
-        mAdapter.clear();
         //If a valid list of {@link NewsEvent)s exists, add them to adapter's dataset,
         //this will trigger the ListView to update
         if (events != null && !events.isEmpty()) {
